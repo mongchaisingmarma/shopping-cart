@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+   <title>Shopping Cart</title>
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" rel="stylesheet" />
+   <link href="style.css" rel="stylesheet">
+</head>
+
+<body>
+
+   <section>
+      <div class="container">
+         <div class="cart">
+            <div class="col-md-12 col-lg-10 mx-auto">
+               <div class="cart-item">
+                  <div class="row">
+                     <div class="col-md-7 center-item">
+                        <img src="images/product-1.png" alt="">
+                        <h5>iPhone 11 128GB Black</h5>
+                     </div>
+
+                     <div class="col-md-5 center-item">
+                        <div class="input-group number-spinner">
+                           <button class="btn btn-default"><i id="phone-minus-button" class="fas fa-minus"></i></button>
+                           <input id ="phone-input" type="text" class="form-control text-center" value="1">
+                           <button class="btn btn-default"><i id="phone-plus-button" class="fas fa-plus"></i></button>
+                        </div>
+                        <h5>$ <span id="phone-price">1219</span></h5>
+                        <img src="images/remove.png" alt="" class="remove-item">
+                     </div>
+                  </div>
+               </div>
+
+               <div class="cart-item">
+                  <div class="row">
+                     <div class="col-md-7 center-item mx-auto">
+                        <img src="images/product-2.png" alt="">
+                        <h5>iPhone 11 Silicone Case - Black</h5>
+                     </div>
+                     <div class="col-md-5 center-item">
+                        <div class="input-group number-spinner">
+                           <button class="btn btn-default"><i id="cover-minus-button" class="fas fa-minus"></i></button>
+                           <input id="cover-input" type="text" class="form-control text-center" value="1">
+                           <button class="btn btn-default"><i id="cover-plus-button" class="fas fa-plus"></i></button>
+
+                        </div>
+                        <h5>$ <span id="cover-price">59</span></h5>
+                        <img src="images/remove.png" alt="" class="remove-item">
+                     </div>
+                  </div>
+               </div>
+
+               <div class="cart-item">
+                  <div class="row">
+
+                     <div class="col-md-8">
+                        <h5>Subtotal: </h5>
+                        <h5>Tax:</h5>
+                        <h5>Total:</h5>
+                     </div>
+
+                     <div class="col-md-4 status">
+                        <h5>$ <span id="subtotal-price">1278</span></h5>
+                        <h5>$0</h5>
+                        <h5>$ <span id="total-price">1278</span></h5>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-md-12 pt-4 pb-4">
+                  <button id="check-out-button" type="button" class="btn btn-success check-out">Check Out</button>
+               </div>
+            </div>
+         </div>
+      </div>
+   </section>
+
+   <Script>
+      //phone
+      //plus button handler
+      const phonePlusButton = document.getElementById("phone-plus-button");
+      phonePlusButton.addEventListener("click", function(){
+         //const phoneInput = document.getElementById("phone-input").value;
+         //const phoneInputNumber = parseFloat(phoneInput);
+         //const updatePhonePlusNumber = phoneInputNumber + 1;
+         //document.getElementById("phone-input").value = updatePhonePlusNumber;
+         getProductNo("phone-input", 1);
+
+         //const phonePrice = document.getElementById("phone-price").innerText;
+         //const phonePriceNumber = parseFloat(phonePrice);
+         //const updatePhonePrice = phonePriceNumber + 1219;
+         //document.getElementById("phone-price").innerText = updatePhonePrice;
+         getPrice("phone-price", 1219);
+      });
+
+      //phone
+      //Minus button handler
+      const phoneMinusButton = document.getElementById("phone-minus-button");
+      phoneMinusButton.addEventListener("click", function() {
+         //const phoneInput = document.getElementById("phone-input").value;
+         //const phoneInputNumber = parseFloat(phoneInput);
+         //const updateMinusNumber = phoneInputNumber - 1;
+         //document.getElementById("phone-input").value = updateMinusNumber;
+         getProductNo("phone-input", -1);
+
+         //const phonePrice = document.getElementById("phone-price").innerText;
+         //const phonePriceNumber = parseFloat(phonePrice);
+         //const updatePhonePrice = phonePriceNumber - 1219;
+         //document.getElementById("phone-price").innerText = updatePhonePrice;
+         getPrice("phone-price", -1219);
+      });
+      
+
+      //Cover
+      //plus button handler
+      const coverPlusButton = document.getElementById("cover-plus-button");
+      coverPlusButton.addEventListener("click", function(){
+         getProductNo("cover-input", 1);
+         getPrice("cover-price", 59);
+      });
+
+      //Minus button handler
+      const coverMinusButton = document.getElementById("cover-minus-button");
+      coverMinusButton.addEventListener("click", function(){
+         getProductNo("cover-input", -1);
+         getPrice("cover-price", -59);
+      });
+
+
+      //get product no
+      function getProductNo(id, number){
+         const Input = document.getElementById(id).value;
+         const InputNumber = parseFloat(Input);
+         const updateNumber = InputNumber + number;
+         document.getElementById(id).value = updateNumber;
+      }
+
+      //get price
+      function getPrice(id, number){
+         const Price = document.getElementById(id).innerText;
+         const PriceNumber = parseFloat(Price);
+         const updatePrice = PriceNumber + number;
+         document.getElementById(id).innerText = updatePrice;
+      }
+
+      //Check out button
+      var checkOutButton = document.getElementById("check-out-button");
+      checkOutButton.addEventListener("click", function(){
+         alert("Thank you for your click");
+      });
+   </Script>
+</body>
+
+</html>
